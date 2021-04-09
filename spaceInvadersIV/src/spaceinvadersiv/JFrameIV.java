@@ -6,9 +6,18 @@ package spaceinvadersiv;
  */
 public class JFrameIV extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JFrameIV
-     */
+    public static final double STEP = 20.0;
+    public static final double TANK_XMIN = 8.0;
+    public static final double TANK_XMAX = 568.0;
+    public static final double ALIEN_XMIN = TANK_XMIN;
+    public static final double ALIEN_XMAX = TANK_XMAX;
+    public static final double ROCKET_YMIN = 270.0;
+    public static final double ROCKET_YMAX = 8.0;
+    
+    // CollezioneElementi collEl;  da creare
+    Missile missile;
+    Tank tank;
+
     public JFrameIV() {
         initComponents();
     }
