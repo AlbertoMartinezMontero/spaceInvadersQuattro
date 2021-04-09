@@ -1,5 +1,7 @@
 package spaceinvadersiv;
 
+import java.util.concurrent.Executors;
+
 /**
  *
  * @author alber
@@ -20,6 +22,8 @@ public class JFrameIV extends javax.swing.JFrame {
 
     public JFrameIV() {
         initComponents();
+       var exe = Executors.newCachedThreadPool();
+       exe.execute(new ThreadAlien());
     }
 
     /**
