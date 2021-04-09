@@ -1,9 +1,5 @@
 package spaceinvadersiv;
 
-/**
- *
- * @author alber
- */
-public class Missile {
+public class Missile extends ElementoDiGioco {
     
 }

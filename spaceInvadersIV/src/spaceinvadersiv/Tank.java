@@ -1,9 +1,5 @@
 package spaceinvadersiv;
 
-/**
- *
- * @author alber
- */
-public class Tank {
+public class Tank extends ElementoDiGioco {
     
 }
