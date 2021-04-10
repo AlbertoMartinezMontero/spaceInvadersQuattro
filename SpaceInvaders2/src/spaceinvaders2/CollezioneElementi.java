@@ -1,23 +1,25 @@
-package spaceinvadersiv;
 
-import java.awt.List;
+package spaceinvaders2;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ *
+ * @author alber
+ */
+public class CollezioneElementi {
+      private ArrayList<ElementiDiGioco> lista = new ArrayList<>();
 
-public class CollezioneAlieni {
-    private ArrayList<Alien> alieni = new ArrayList<>();
-      private ArrayList<ElementoDiGioco> lista = new ArrayList<>();
-
-    public synchronized ElementoDiGioco get(int i) {
+    public synchronized ElementiDiGioco get(int i) {
         return lista.get(i);
     }
 
-    public synchronized void add(ElementoDiGioco e) {
+    public synchronized void add(ElementiDiGioco e) {
         lista.add(e);
     }
 
-    public synchronized void remove(ElementoDiGioco e) {
+    public synchronized void remove(ElementiDiGioco e) {
         lista.remove(e);
     }
 
@@ -29,10 +31,10 @@ public class CollezioneAlieni {
      * Elimina i missili ormai usciti dallo schermo.
      * Chiamato dal thread di housekeeping
      */
-    public synchronized void removeRockets() {
-        Iterator<ElementoDiGioco> iter = lista.iterator();
+    public synchronized void removeMissile() {
+        Iterator<ElementiDiGioco> iter = lista.iterator();
         while (iter.hasNext()) {
-            ElementoDiGioco p = iter.next();
+            ElementiDiGioco p = iter.next();
             if (p instanceof Missile && !p.getButton().isVisible()) {
                 System.out.println("p = " + p);
                 // si noti l'uso del remove di iterator invece che della lista
@@ -61,4 +63,3 @@ public class CollezioneAlieni {
 }
 
     
-

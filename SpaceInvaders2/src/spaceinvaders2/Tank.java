@@ -1,17 +1,27 @@
-package spaceinvadersiv;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package spaceinvaders2;
 
 import javax.swing.JButton;
 
-public class Tank extends ElementoDiGioco {
-    public Tank(JButton b) {
+/**
+ *
+ * @author alber
+ */
+public class Tank extends ElementiDiGioco {
+public Tank(JButton b) {
         setButton(b);
-        setX(JFrameIV.TANK_XMIN);
-        setY(JFrameIV.ROCKET_YMIN);
+        setX(JFrame01.TANK_XMIN);
+        setY(JFrame01.MISSILE_YMIN);
         setTargetX(getX());
         setTargetY(getY());
         setStepX(2);
         setStepY(0);
     }
+
     @Override
     public void move() {
         // se devo andare a destra ...

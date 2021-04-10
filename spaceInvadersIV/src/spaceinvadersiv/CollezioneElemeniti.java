@@ -1,36 +1,29 @@
 package spaceinvadersiv;
 
-import java.awt.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 
-public class CollezioneAlieni {
-    private ArrayList<Alien> alieni = new ArrayList<>();
-      private ArrayList<ElementoDiGioco> lista = new ArrayList<>();
-
+public class CollezioneElemeniti {
+    private ArrayList<ElementoDiGioco> listaElemento = new ArrayList<>();
     public synchronized ElementoDiGioco get(int i) {
-        return lista.get(i);
+        return listaElemento.get(i);
     }
-
-    public synchronized void add(ElementoDiGioco e) {
-        lista.add(e);
+     public synchronized void add(ElementoDiGioco e) {
+        listaElemento.add(e);
     }
-
-    public synchronized void remove(ElementoDiGioco e) {
-        lista.remove(e);
+public synchronized void remove (ElementoDiGioco e){
+    listaElemento.remove(e);
+}
+public synchronized int size() {
+        return listaElemento.size();
     }
-
-    public synchronized int size() {
-        return lista.size();
-    }
-
-    /**
+/**
      * Elimina i missili ormai usciti dallo schermo.
      * Chiamato dal thread di housekeeping
      */
-    public synchronized void removeRockets() {
-        Iterator<ElementoDiGioco> iter = lista.iterator();
+public synchronized void removeMissile() {
+        Iterator<ElementoDiGioco> iter = listaElemento.iterator();
         while (iter.hasNext()) {
             ElementoDiGioco p = iter.next();
             if (p instanceof Missile && !p.getButton().isVisible()) {
@@ -41,13 +34,12 @@ public class CollezioneAlieni {
             }
         }
     }
-
-    /**
+ /**
      * Metodo per la gestione del moto di tutti gli elementi.
      * Chiamato dal SingleThread
      */
     public synchronized void manageElement() {
-        lista.stream().forEach(e -> {
+        listaElemento.stream().forEach(e -> {
             if (e.hasToMove()) {
                 e.move();
             } else {
@@ -60,5 +52,5 @@ public class CollezioneAlieni {
     }
 }
 
-    
+
 

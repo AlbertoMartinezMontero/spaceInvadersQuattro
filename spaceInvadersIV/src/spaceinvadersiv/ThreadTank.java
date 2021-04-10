@@ -1,11 +1,18 @@
 package spaceinvadersiv;
 
+import javax.swing.JButton;
 
-public class ThreadTank implements Runnable{
+public class ThreadTank implements Runnable {
+
+    private Tank tank;
+    public static final long TIMEOUT = 10;
+
+    public ThreadTank(JButton jBT) {
+        tank = new Tank(jBT);
+    }
 
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        tank.move();
     }
-    
 }
