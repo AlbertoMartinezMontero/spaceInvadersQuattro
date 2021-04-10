@@ -20,40 +20,41 @@ public class JFrameIV extends javax.swing.JFrame {
     // CollezioneElementi collEl;  da creare
     Missile missile;
     Tank tank;
-    CollezioneElemeniti coll;
-    ThreadAlien threadAlien;
-    ThreadMissile threadMissile;
-    ThreadTank threadTank;
-    private List<Alien> listaAlieni = new ArrayList<>();
-    Alien alien1;
-    Alien alien2;
-    Alien alien3;
+    CollezioneElementi coll;
+
+  
+ 
 
     public JFrameIV() {
         initComponents();
-        
+
         setSize(800, 600);
-        coll.add(alien1);
-        coll.add(alien2);
-        coll.add(alien3);
-        coll.add(tank);
-        
-     List<Alien>alieni= new ArrayList<>();
-     alieni.add(alien1);
-     alieni.add(alien2);
-     alieni.add(alien3);
-       
-        
-        
-        
+//        coll.add(new Alien(50, jButtonAlien1));
+//        coll.add(new Alien(100, jButtonAlien2));
+//        coll.add(new Alien(150, jButtonAlien3));
+//        tank = new Tank(jButtonTank);
+//        coll.add(tank);
+
+        List<Alien> alieni = new ArrayList<>();
+    Alien alien1  = new Alien(50, jButtonAlien1);
+    Alien alien2  = new Alien(00, jButtonAlien2);
+    Alien alien3  = new Alien(150, jButtonAlien3);
+        alieni.add(alien1);
+        alieni.add(alien2);
+        alieni.add(alien3);
+
+        ThreadAlien ta = new ThreadAlien(jButtonAlien1, jButtonAlien2, jButtonAlien3);
+        ThreadMissile tm = new ThreadMissile(jButtonMissile);
+        ThreadTank tt = new ThreadTank(jButtonTank);
+
         var exe = Executors.newCachedThreadPool();
-        exe.execute(threadAlien);
-        exe.execute(threadMissile);
-        exe.execute(threadTank);
-        
-        threadAlien.run();
-        threadMissile.run();
-        threadTank.run();
+        exe.execute(ta);
+        exe.execute(tm);
+        exe.execute(tt);
+
+        ta.run();
+        tm.run();
+        tt.run();
     }
 
     /**
@@ -182,25 +183,25 @@ public class JFrameIV extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonTankActionPerformed
 
     private void jButtonLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLeftActionPerformed
-        tank.setTargetX(tank.getTargetX()- STEP);
+        tank.setTargetX(tank.getTargetX() - STEP);
     }//GEN-LAST:event_jButtonLeftActionPerformed
 
     private void jButtonRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRightActionPerformed
-     tank.setTargetX(tank.getTargetX()- STEP);
+        tank.setTargetX(tank.getTargetX() - STEP);
     }//GEN-LAST:event_jButtonRightActionPerformed
 
     private void jButtonMissileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMissileActionPerformed
-    
-     if (missile != null && !missile.getButton().isVisible()) {
+
+        if (missile != null && !missile.getButton().isVisible()) {
             coll.remove(missile);
             missile = new Missile(tank.getX(), jButtonMissile);
             coll.add(missile);
         } else if (missile == null) {
-           JButton jButtonMissile = null;
+            JButton jButtonMissile = null;
             missile = new Missile(tank.getX(), jButtonMissile);
             coll.add(missile);
         }
-                                       
+
     }//GEN-LAST:event_jButtonMissileActionPerformed
 
     private void jButtonAlien1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlien1ActionPerformed

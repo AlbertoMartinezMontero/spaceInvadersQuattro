@@ -14,5 +14,6 @@ public class ThreadTank implements Runnable {
     @Override
     public void run() {
         tank.move();
+        
     }
 }
