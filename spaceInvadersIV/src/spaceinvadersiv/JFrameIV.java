@@ -1,11 +1,9 @@
 package spaceinvadersiv;
 
-import java.util.concurrent.Executors;
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executors;
 import javax.swing.JButton;
-import static spaceinvadersiv.ThreadAlien.TIMEOUT;
 
 public class JFrameIV extends javax.swing.JFrame {
 
@@ -20,41 +18,43 @@ public class JFrameIV extends javax.swing.JFrame {
     // CollezioneElementi collEl;  da creare
     Missile missile;
     Tank tank;
-    CollezioneElementi coll;
-
-  
- 
+    CollezioneElementi coll = new CollezioneElementi();
 
     public JFrameIV() {
         initComponents();
 
-        setSize(800, 600);
-//        coll.add(new Alien(50, jButtonAlien1));
+        setSize(800, 800);
+//       coll.add(new Alien(50, jButtonAlien1));
 //        coll.add(new Alien(100, jButtonAlien2));
 //        coll.add(new Alien(150, jButtonAlien3));
-//        tank = new Tank(jButtonTank);
-//        coll.add(tank);
+        tank = new Tank(jButtonTank);
+        //coll.add(tank);
 
         List<Alien> alieni = new ArrayList<>();
-    Alien alien1  = new Alien(50, jButtonAlien1);
-    Alien alien2  = new Alien(00, jButtonAlien2);
-    Alien alien3  = new Alien(150, jButtonAlien3);
+        Alien alien1 = new Alien(50, jButtonAlien1);
+        Alien alien2 = new Alien(100, jButtonAlien2);
+        Alien alien3 = new Alien(150, jButtonAlien3);
         alieni.add(alien1);
         alieni.add(alien2);
         alieni.add(alien3);
-
         ThreadAlien ta = new ThreadAlien(jButtonAlien1, jButtonAlien2, jButtonAlien3);
         ThreadMissile tm = new ThreadMissile(jButtonMissile);
         ThreadTank tt = new ThreadTank(jButtonTank);
 
         var exe = Executors.newCachedThreadPool();
-        exe.execute(ta);
-        exe.execute(tm);
-        exe.execute(tt);
+        exe.submit(new Runnable() {
+            @Override
+            public void run() {
+                exe.execute(ta);
+                exe.execute(tm);
+                exe.execute(tt);
 
-        ta.run();
-        tm.run();
-        tt.run();
+                ta.run();
+                tm.run();
+                tt.run();
+            }
+        });
+
     }
 
     /**
@@ -130,29 +130,27 @@ public class JFrameIV extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jButtonLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
-                                .addComponent(jButtonFire, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(jButtonMissile, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGap(75, 75, 75)
-                                    .addComponent(jButtonTank, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(47, 47, 47)
-                        .addComponent(jButtonRight, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jButtonMissile, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(75, 75, 75)
+                            .addComponent(jButtonTank, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonAlien2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonAlien1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonAlien3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(390, Short.MAX_VALUE))
+                            .addComponent(jButtonAlien3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonFire, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonRight, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(440, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,12 +165,12 @@ public class JFrameIV extends javax.swing.JFrame {
                 .addComponent(jButtonMissile)
                 .addGap(151, 151, 151)
                 .addComponent(jButtonTank, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonLeft)
                     .addComponent(jButtonFire)
                     .addComponent(jButtonRight))
-                .addGap(77, 77, 77))
+                .addGap(141, 141, 141))
         );
 
         pack();
