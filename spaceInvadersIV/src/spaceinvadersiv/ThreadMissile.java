@@ -19,6 +19,7 @@ public class ThreadMissile implements Runnable {
         while (true) {
             //Chiamiamo il metodo move() del missile
             missile.move();
+            missile.raggiuntoTarget();
 
             try {
                 Thread.sleep(TIMEOUT);

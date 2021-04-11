@@ -17,10 +17,10 @@ public class Tank extends ElementoDiGioco {
         // se devo andare a destra ...
         if (getTargetX() > getX()){
             // ... imposto step a +1
-            setStepX(1);
+            setStepX(10);
         } else{
             // ... altrimenti a -1 (i.e. vado a sinistra)
-            setStepX(-1);
+            setStepX(-10);
         }
         // mi muovo
         setX(getX() + getStepX());

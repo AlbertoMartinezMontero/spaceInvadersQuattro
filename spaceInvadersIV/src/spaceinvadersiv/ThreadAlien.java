@@ -39,6 +39,7 @@ public class ThreadAlien implements Runnable {
 
             //per ogni alieno chiamo il suo metodo move()
             listaAlieni.forEach(alien -> {
+                alien.raggiuntoTarget();
                 alien.move();
             });
                 //aspetto ms

@@ -14,9 +14,10 @@ public class JFrameIV extends javax.swing.JFrame {
     public static final double ALIEN_XMAX = TANK_XMAX;
     public static final double ROCKET_YMIN = 270.0;
     public static final double ROCKET_YMAX = 8.0;
+    
 
     // CollezioneElementi collEl;  da creare
-    Missile missile;
+   Missile missile;
     Tank tank;
     CollezioneElementi coll = new CollezioneElementi();
 
@@ -24,6 +25,7 @@ public class JFrameIV extends javax.swing.JFrame {
         initComponents();
 
         setSize(800, 800);
+        Missile missile = new Missile(270,100,jButtonMissile);
 //       coll.add(new Alien(50, jButtonAlien1));
 //        coll.add(new Alien(100, jButtonAlien2));
 //        coll.add(new Alien(150, jButtonAlien3));
@@ -85,6 +87,11 @@ public class JFrameIV extends javax.swing.JFrame {
         });
 
         jButtonFire.setText("fire");
+        jButtonFire.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFireActionPerformed(evt);
+            }
+        });
 
         jButtonRight.setText(">>");
         jButtonRight.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +100,7 @@ public class JFrameIV extends javax.swing.JFrame {
             }
         });
 
-        jButtonTank.setIcon(new javax.swing.ImageIcon("C:\\Users\\alber\\Documents\\jarvis\\insieme\\spaceInvadersQuattro\\tank.png")); // NOI18N
+        jButtonTank.setIcon(new javax.swing.ImageIcon("C:\\Users\\utente\\Documents\\GitHub\\spaceInvadersQuattro\\spaceInvadersIV\\src\\spaceinvadersiv\\photo_2021-04-09_15-44-25.jpg")); // NOI18N
         jButtonTank.setText("Tank");
         jButtonTank.setMaximumSize(new java.awt.Dimension(52, 51));
         jButtonTank.setMinimumSize(new java.awt.Dimension(52, 51));
@@ -103,14 +110,14 @@ public class JFrameIV extends javax.swing.JFrame {
             }
         });
 
-        jButtonMissile.setIcon(new javax.swing.ImageIcon("C:\\Users\\alber\\Documents\\jarvis\\insieme\\spaceInvadersQuattro\\missile.png")); // NOI18N
+        jButtonMissile.setIcon(new javax.swing.ImageIcon("C:\\Users\\utente\\Documents\\GitHub\\spaceInvadersQuattro\\spaceInvadersIV\\src\\spaceinvadersiv\\missile.png")); // NOI18N
         jButtonMissile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMissileActionPerformed(evt);
             }
         });
 
-        jButtonAlien1.setIcon(new javax.swing.ImageIcon("C:\\Users\\alber\\Documents\\jarvis\\insieme\\spaceInvadersQuattro\\allien.png")); // NOI18N
+        jButtonAlien1.setIcon(new javax.swing.ImageIcon("C:\\Users\\utente\\Documents\\GitHub\\spaceInvadersQuattro\\spaceInvadersIV\\src\\spaceinvadersiv\\allien.png")); // NOI18N
         jButtonAlien1.setText("alien1");
         jButtonAlien1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,10 +125,10 @@ public class JFrameIV extends javax.swing.JFrame {
             }
         });
 
-        jButtonAlien2.setIcon(new javax.swing.ImageIcon("C:\\Users\\alber\\Documents\\jarvis\\insieme\\spaceInvadersQuattro\\allien.png")); // NOI18N
+        jButtonAlien2.setIcon(new javax.swing.ImageIcon("C:\\Users\\utente\\Documents\\GitHub\\spaceInvadersQuattro\\spaceInvadersIV\\src\\spaceinvadersiv\\allien.png")); // NOI18N
         jButtonAlien2.setText("alien2");
 
-        jButtonAlien3.setIcon(new javax.swing.ImageIcon("C:\\Users\\alber\\Documents\\jarvis\\insieme\\spaceInvadersQuattro\\allien.png")); // NOI18N
+        jButtonAlien3.setIcon(new javax.swing.ImageIcon("C:\\Users\\utente\\Documents\\GitHub\\spaceInvadersQuattro\\spaceInvadersIV\\src\\spaceinvadersiv\\allien.png")); // NOI18N
         jButtonAlien3.setText("alien3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -150,7 +157,7 @@ public class JFrameIV extends javax.swing.JFrame {
                         .addComponent(jButtonFire, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonRight, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(440, Short.MAX_VALUE))
+                .addContainerGap(443, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,30 +188,49 @@ public class JFrameIV extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonTankActionPerformed
 
     private void jButtonLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLeftActionPerformed
-        tank.setTargetX(tank.getTargetX() - STEP);
+        // tank.setTargetX(tank.getTargetX() - STEP);
+        if (tank.getX() > 28.0) {
+            tank.setX(tank.getX() - 20.0);
+        } else {
+            tank.setX(tank.getX());
+        }
+
+
     }//GEN-LAST:event_jButtonLeftActionPerformed
 
     private void jButtonRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRightActionPerformed
-        tank.setTargetX(tank.getTargetX() - STEP);
+        //tank.setTargetX(tank.getTargetX() + STEP);
+        if (tank.getX() < 548.0) {
+            tank.setX(tank.getX() + 20.0);
+        } else {
+            tank.setX(tank.getX());
     }//GEN-LAST:event_jButtonRightActionPerformed
-
+    }
     private void jButtonMissileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMissileActionPerformed
 
-        if (missile != null && !missile.getButton().isVisible()) {
-            coll.remove(missile);
-            missile = new Missile(tank.getX(), jButtonMissile);
-            coll.add(missile);
-        } else if (missile == null) {
-            JButton jButtonMissile = null;
-            missile = new Missile(tank.getX(), jButtonMissile);
-            coll.add(missile);
-        }
 
     }//GEN-LAST:event_jButtonMissileActionPerformed
 
     private void jButtonAlien1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlien1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAlien1ActionPerformed
+
+    private void jButtonFireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFireActionPerformed
+     missile.move();
+        // if (missile != null && !missile.getButton().isVisible()) {
+            //coll.remove(missile);
+          //  missile = new Missile(tank.getX(), jButtonMissile);
+           // coll.add(missile);
+           // missile = new Missile(260.0, 100.0,jButtonMissile);
+           
+       // } else if (missile == null) {
+          // JButton jButtonMissile = null;
+           // missile = new Missile(tank.getX(), jButtonMissile);
+          //  coll.add(missile);
+         //   missile = new Missile(150.0,260.0, jButtonMissile);
+        
+
+    }//GEN-LAST:event_jButtonFireActionPerformed
 
     /**
      * @param args the command line arguments

@@ -52,7 +52,7 @@
                       <Component id="jButtonRight" min="-2" pref="57" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="440" max="32767" attributes="0"/>
+              <EmptySpace pref="443" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -93,6 +93,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="fire"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonFireActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonRight">
       <Properties>
@@ -105,7 +108,7 @@
     <Component class="javax.swing.JButton" name="jButtonTank">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\alber\Documents\jarvis\insieme\spaceInvadersQuattro\tank.png"/>
+          <Image iconType="2" name="C:\Users\utente\Documents\GitHub\spaceInvadersQuattro\spaceInvadersIV\src\spaceinvadersiv\photo_2021-04-09_15-44-25.jpg"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Tank"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -122,7 +125,7 @@
     <Component class="javax.swing.JButton" name="jButtonMissile">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\alber\Documents\jarvis\insieme\spaceInvadersQuattro\missile.png"/>
+          <Image iconType="2" name="C:\Users\utente\Documents\GitHub\spaceInvadersQuattro\spaceInvadersIV\src\spaceinvadersiv\missile.png"/>
         </Property>
       </Properties>
       <Events>
@@ -132,7 +135,7 @@
     <Component class="javax.swing.JButton" name="jButtonAlien1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\alber\Documents\jarvis\insieme\spaceInvadersQuattro\allien.png"/>
+          <Image iconType="2" name="C:\Users\utente\Documents\GitHub\spaceInvadersQuattro\spaceInvadersIV\src\spaceinvadersiv\allien.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="alien1"/>
       </Properties>
@@ -143,7 +146,7 @@
     <Component class="javax.swing.JButton" name="jButtonAlien2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\alber\Documents\jarvis\insieme\spaceInvadersQuattro\allien.png"/>
+          <Image iconType="2" name="C:\Users\utente\Documents\GitHub\spaceInvadersQuattro\spaceInvadersIV\src\spaceinvadersiv\allien.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="alien2"/>
       </Properties>
@@ -151,7 +154,7 @@
     <Component class="javax.swing.JButton" name="jButtonAlien3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\alber\Documents\jarvis\insieme\spaceInvadersQuattro\allien.png"/>
+          <Image iconType="2" name="C:\Users\utente\Documents\GitHub\spaceInvadersQuattro\spaceInvadersIV\src\spaceinvadersiv\allien.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="alien3"/>
       </Properties>

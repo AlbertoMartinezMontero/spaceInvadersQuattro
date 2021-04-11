@@ -25,7 +25,7 @@ public class ThreadTank implements Runnable {
                 e.printStackTrace();
             }
         }
-        // tank.move();
+        //tank.move();
 
     }
 }
